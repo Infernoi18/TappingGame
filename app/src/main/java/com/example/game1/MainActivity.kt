@@ -102,6 +102,22 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("p1", pscore1)
         intent.putExtra("p2", pscore2)
         intent.putExtra("winner", winner)
+
+        val prefs = getSharedPreferences("game_data", MODE_PRIVATE)
+        val editor = prefs.edit()
+        var p1wins = prefs.getInt("p1wins", 0)
+        var p2wins = prefs.getInt("p2wins", 0)
+
+        if (pscore1 > pscore2) {
+            p1wins++
+        } else if (pscore2 > pscore1) {
+            p2wins++
+        }
+
+        editor.putInt("p1wins", p1wins)
+        editor.putInt("p2wins", p2wins)
+        editor.apply()
+
         startActivity(intent)
     }
 }

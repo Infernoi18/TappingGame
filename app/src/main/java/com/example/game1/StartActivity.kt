@@ -20,7 +20,12 @@ class StartActivity : AppCompatActivity() {
         val txtP2 = findViewById<TextView>(R.id.txt_p2)
         val txtWinner = findViewById<TextView>(R.id.txt_winner)
         val btnPlayAgain = findViewById<Button>(R.id.btn_play_again)
+        val btnLeaderboard = findViewById<Button>(R.id.btn_leaderboard)
 
+        btnLeaderboard.setOnClickListener {
+            val intent = Intent(this, LeaderboardActivity::class.java)
+            startActivity(intent)
+        }
         txtP1.text = "Player 1 Score: $p1"
         txtP2.text = "Player 2 Score: $p2"
         txtWinner.text = winner
